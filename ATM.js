@@ -13,7 +13,7 @@ const rl = readline.createInterface({
     output: process.stdout
 })
 
-const storeData = (number, operator) => {
+const changeBalance = (number, operator) => {
     try {
         accessSync(filePath);
         const jsonObject = readFileSync(filePath, 'utf8');
@@ -44,7 +44,7 @@ rl.question('What do you want to do? To substract money, press "-", to add money
                 return;
             } else {
                 const number = parseInt(answer);
-                storeData(number, operator);
+                changeBalance(number, operator);
                 rl.close();
             }
         })
