@@ -8,21 +8,17 @@ const rl = readline.createInterface({
     output: process.stdout
 })
 
-const storeData = (newName) => {
-    try {
-        accessSync(filePath);
-        const jsonObject = readFileSync(filePath, 'utf8');
-        const decodedObject = JSON.parse(jsonObject);
-        console.log(`The previous name was: ${decodedObject.savedName}`);
-        decodedObject.savedName = newName;
-        console.log(`The new name is ${newName}`);
+try {
+    accessSync(filePath);
+    const jsonObject = readFileSync(filePath, 'utf8');
+    const decodedObject = JSON.parse(jsonObject);
+    console.log(`The current name is: ${decodedObject.savedName}`);
+    rl.question('Please enter a new Name: ', (answer) => {
+        decodedObject.savedName = answer;
         writeFileSync(filePath, JSON.stringify(decodedObject));
-    } catch (err) {
-        console.error('Something went wrong, ', err);
-    }
+        console.log(`The new name is ${answer}`);
+        rl.close();
+    })
+} catch (err) {
+    console.error('Something went wrong, ', err);
 }
-
-rl.question('Please enter a new Name: ', (answer) => {
-    storeData(answer);
-    rl.close();
-})

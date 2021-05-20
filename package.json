@@ -8,5 +8,13 @@
   },
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akirsteina/tasks-askForAName-ATM.git"
+  },
+  "bugs": {
+    "url": "https://github.com/akirsteina/tasks-askForAName-ATM/issues"
+  },
+  "homepage": "https://github.com/akirsteina/tasks-askForAName-ATM#readme",
   "description": ""
 }
