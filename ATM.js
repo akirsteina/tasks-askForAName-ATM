@@ -32,21 +32,19 @@ const changeBalance = (number, operator) => {
 }
 
 rl.question('What do you want to do? To substract money, press "-", to add money press "+": ', (operator) => {
-    if (operator != '+' && operator != '-') {
+    if (operator !== '+' && operator !== '-') {
         console.log('Invalid operator, please start from beginning');
         rl.close();
         return;
-    } else {
-        rl.question('What amount? ', (answer) => {
-            if (isNaN(answer)) {
-                console.log('This is not a number, please start from beginning');
-                rl.close();
-                return;
-            } else {
-                const number = parseInt(answer);
-                changeBalance(number, operator);
-                rl.close();
-            }
-        })
     }
+    rl.question('What amount? ', (answer) => {
+        if (isNaN(answer)) {
+            console.log('This is not a number, please start from beginning');
+            rl.close();
+            return;
+        }
+        const number = parseInt(answer);
+        changeBalance(number, operator);
+        rl.close();
+    })
 });
